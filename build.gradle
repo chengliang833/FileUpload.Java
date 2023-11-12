@@ -12,12 +12,12 @@ def JacksonVersion = "2.8.4"
 
 repositories {
     mavenLocal()
-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
     mavenCentral()
 }
 
 dependencies {
-    compile(
+    implementation(
             // spring framework
             "org.springframework:spring-context:${springVersion}",
             "org.springframework:spring-web:${springVersion}",
@@ -65,14 +65,14 @@ dependencies {
             "org.jetbrains:annotations:15.0",
 
     )
-    testCompile(
+    testImplementation(
             //jUnit
             "junit:junit:4.12",
     )
 }
 
 task copyJars(type: Copy) {
-    from configurations.runtime
+    from configurations.runtimeClasspath
     into "lib" //复制到lib目录
 }
 
